@@ -4,7 +4,7 @@ import os
 
 app = FastAPI()
 
-# --- Environment Variables ---
+# --- Environment Variables --- test
 WHATSAPP_TOKEN = os.getenv("WHATSAPP_TOKEN")  # Your long Bearer token
 PHONE_NUMBER_ID = os.getenv("PHONE_NUMBER_ID")  # e.g. "972855682579158"
 VERIFY_TOKEN = os.getenv("VERIFY_TOKEN", "my_verify_token")  # Arbitrary string you set
