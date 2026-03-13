@@ -1,3 +1,5 @@
+from email.mime import message
+
 from fastapi import FastAPI, Request, HTTPException
 import requests
 import os
@@ -52,10 +54,13 @@ async def handle_webhook(request: Request):
     except Exception as e:
         print("Error handling webhook:", e)
 
+    sender = body["from"]
+    send_message(sender, "Test message")
     return {"status": "ok"}
 
 # --- 5. Function to Send Replies ---
 def send_message(to: str, text: str):
+    print("send_message to: ", to, " text; ", text)
     url = f"https://graph.facebook.com/v17.0/{PHONE_NUMBER_ID}/messages"
     headers = {
         "Authorization": f"Bearer {WHATSAPP_TOKEN}",
